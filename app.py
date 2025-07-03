@@ -99,6 +99,7 @@ mood_data = {
             "tip": "Dheere bol, halke sun. Sohne geet, sukoon wali feeling 🧘"
         }
     },
+    
     "haryanvi": {
     "happy": {
         "songs": [
@@ -145,7 +146,7 @@ mood_data = {
         ],
         "tip": "Shaanti se baitho, dhyaan do apne dil ko 🧘‍♂️"
     }
-}
+},
 
 
     "bhojpuri": {
