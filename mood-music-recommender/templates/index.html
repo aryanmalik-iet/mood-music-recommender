@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mood-Based Music Recommender</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>🎧 Mood-Based Music Recommender</h1>
+    <form method="POST" action="/recommend">
+      <label>Select your mood:</label><br><br>
+      <select name="mood">
+        <option value="happy">😊 Happy</option>
+        <option value="sad">😢 Sad</option>
+        <option value="romantic">💘 Romantic</option>
+        <option value="energetic">⚡ Energetic</option>
+        <option value="calm">🧘 Calm</option>
+      </select>
+      <br><br>
+      <button type="submit">Recommend Me a Song</button>
+    </form>
+
+    {% if song %}
+      <div class="result">
+        <h2>{{ mood.capitalize() }} Tip:</h2>
+        <p>{{ tip }}</p>
+        <a href="{{ song }}" target="_blank">🎵 Play Song</a>
+      </div>
+    {% endif %}
+
+    {% if error %}
+      <p class="error">{{ error }}</p>
+    {% endif %}
+  </div>
+</body>
+</html>
