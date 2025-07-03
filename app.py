@@ -99,6 +99,54 @@ mood_data = {
             "tip": "Dheere bol, halke sun. Sohne geet, sukoon wali feeling 🧘"
         }
     },
+    "haryanvi": {
+    "happy": {
+        "songs": [
+            "https://www.youtube.com/watch?v=9ySPQynI6Ww",  # DJ Waley Babu - Badshah
+            "https://www.youtube.com/watch?v=OxmIb4j8xvE",  # Haryanvi Mashup
+            "https://www.youtube.com/watch?v=zWhXIxk8FEI",  # Gajender Phogat - Solid Body
+            "https://www.youtube.com/watch?v=g0bzR3E1WJA"   # DJ Wale Babu Remix
+        ],
+        "tip": "Khush raho, naacho, gaao, zindagi ka maza lo! 😄"
+    },
+    "sad": {
+        "songs": [
+            "https://www.youtube.com/watch?v=03O9d1pFr8w",  # Teri Aakhya Ka Yo Kajal - Sapna Choudhary
+            "https://www.youtube.com/watch?v=duUey2RxY2Y",  # Chhoti Chhoti Baatein
+            "https://www.youtube.com/watch?v=JuLdWY9e1QE",  # Dushmani
+            "https://www.youtube.com/watch?v=3J3FPl87-gk"   # Meri Baat Sun Le O Saathi
+        ],
+        "tip": "Dard ko mehsoos karo, par aage badho. Zindagi chalti rahegi 💙"
+    },
+    "romantic": {
+        "songs": [
+            "https://www.youtube.com/watch?v=lIGeTnFf90A",  # Haryanvi Romantic Song - Raju Punjabi
+            "https://www.youtube.com/watch?v=9tx_M0U8pP4",  # Tera Yaar Hoon Main (Haryanvi Cover)
+            "https://www.youtube.com/watch?v=FCZeh8nt5_Y",  # Pyaar Karunga
+            "https://www.youtube.com/watch?v=RhV1hzPUEhM"   # Tere Bin
+        ],
+        "tip": "Dil se pyaar karo, bina dare 💘"
+    },
+    "energetic": {
+        "songs": [
+            "https://www.youtube.com/watch?v=GE6C1gNUhXA",  # Haryanvi Rap Song - MC Altaf
+            "https://www.youtube.com/watch?v=_LKrr0zKa8k",  # Haryanvi DJ Remix
+            "https://www.youtube.com/watch?v=dQw4w9WgXcQ",  # (Just an example, replace with real energetic song)
+            "https://www.youtube.com/watch?v=OLxdhNKu1Cs"   # Desi Hip-Hop Haryanvi
+        ],
+        "tip": "Energy ko channelize karo, aaj kuch bada karo! 🔥"
+    },
+    "calm": {
+        "songs": [
+            "https://www.youtube.com/watch?v=txhSdTNsZXw",  # Haryanvi Soft Song
+            "https://www.youtube.com/watch?v=VX4uUJxv7f4",  # Soothing Haryanvi Melody
+            "https://www.youtube.com/watch?v=t17aQTCYrTU",  # Calm Vibes - Haryanvi
+            "https://www.youtube.com/watch?v=kUiXktZnmQc"   # Relaxing Haryanvi Tune
+        ],
+        "tip": "Shaanti se baitho, dhyaan do apne dil ko 🧘‍♂️"
+    }
+}
+
 
     "bhojpuri": {
         "happy": {
