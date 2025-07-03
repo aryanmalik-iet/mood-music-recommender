@@ -8,6 +8,16 @@
   <div class="container">
     <h1>🎧 Mood-Based Music Recommender</h1>
     <form method="POST" action="/recommend">
+      <label>🎼 Choose your song taste today:</label><br><br>
+      <select name="language">
+       <option value="hindi" selected>Hindi</option>
+       <option value="haryanvi">Haryanvi</option>
+       <option value="punjabi">Punjabi</option>
+       <option value="bhojpuri">Bhojpuri</option>
+       <option value="english">English</option>
+      </select>
+      <br><br>
+
       <label>Select your mood:</label><br><br>
       <select name="mood">
         <option value="happy">😊 Happy</option>
