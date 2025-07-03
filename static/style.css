@@ -5,6 +5,26 @@ body {
   text-align: center;
   padding: 30px;
 }
+select {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  margin-bottom: 20px; /* add space below each dropdown */
+  width: 200px; /* optional: make dropdown width consistent */
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer; /* adds pointer cursor on hover */
+}
+
+button:hover {
+  background-color: #333; /* subtle hover effect */
+  color: #fff;
+}
+
 select, button {
   padding: 10px;
   font-size: 16px;
