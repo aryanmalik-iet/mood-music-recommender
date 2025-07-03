@@ -9,7 +9,7 @@
     <h1>🎧 Mood-Based Music Recommender</h1>
     <form method="POST" action="/recommend">
       <label>🎼 Choose your song taste today:</label><br><br>
-      <select name="language">
+      <select name="language" required>
        <option value="hindi" selected>Hindi</option>
        <option value="haryanvi">Haryanvi</option>
        <option value="punjabi">Punjabi</option>
@@ -19,7 +19,7 @@
       <br><br>
 
       <label>Select your mood:</label><br><br>
-      <select name="mood">
+      <select name="mood" required>
         <option value="happy">😊 Happy</option>
         <option value="sad">😢 Sad</option>
         <option value="romantic">💘 Romantic</option>
@@ -34,7 +34,7 @@
       <div class="result">
         <h2>{{ mood.capitalize() }} Tip:</h2>
         <p>{{ tip }}</p>
-        <a href="{{ song }}" target="_blank">🎵 Play Song</a>
+        <a href="{{ song }}" target="_blank" rel="noopener noreferrer">🎵 Play Song</a>
       </div>
     {% endif %}
 
