@@ -1,46 +1,121 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Mood-Based Music Recommender</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mood-Based Music Recommender</title>
 </head>
 <body>
-  <div class="container">
-    <h1>🎧 Mood-Based Music Recommender</h1>
-    <form method="POST" action="/recommend">
-      <label>🎼 Choose your song taste today:</label><br><br>
-      <select name="language" required>
-       <option value="hindi" selected>Hindi</option>
-       <option value="haryanvi">Haryanvi</option>
-       <option value="punjabi">Punjabi</option>
-       <option value="bhojpuri">Bhojpuri</option>
-       <option value="english">English</option>
-      </select>
-      <br><br>
 
-      <label>Select your mood:</label><br><br>
-      <select name="mood" required>
-        <option value="happy">😊 Happy</option>
-        <option value="sad">😢 Sad</option>
-        <option value="romantic">💘 Romantic</option>
-        <option value="energetic">⚡ Energetic</option>
-        <option value="calm">🧘 Calm</option>
-      </select>
-      <br><br>
-      <button type="submit">Recommend Me a Song</button>
-    </form>
+<div class="container">
+  <h1>🎧 Mood-Based Music Recommender</h1>
+  
+  <form method="POST" action="/recommend">
+    <label>🎼 Choose your song taste today:</label>
+    <select name="language" required>
+      <option value="hindi" selected>Hindi</option>
+      <option value="haryanvi">Haryanvi</option>
+      <option value="punjabi">Punjabi</option>
+      <option value="bhojpuri">Bhojpuri</option>
+      <option value="english">English</option>
+    </select>
 
-    {% if song %}
-      <div class="result">
-        <h2>{{ mood.capitalize() }} Tip:</h2>
-        <p>{{ tip }}</p>
-        <a href="{{ song }}" target="_blank" rel="noopener noreferrer">🎵 Play Song</a>
-      </div>
-    {% endif %}
+    <label>Select your mood:</label>
+    <select name="mood" required>
+      <option value="happy">😊 Happy</option>
+      <option value="sad">😢 Sad</option>
+      <option value="romantic">💘 Romantic</option>
+      <option value="energetic">⚡ Energetic</option>
+      <option value="calm">🧘 Calm</option>
+    </select>
 
-    {% if error %}
-      <p class="error">{{ error }}</p>
-    {% endif %}
+    <button type="submit">Recommend Me a Song</button>
+  </form>
+
+  <!-- Result or error from Flask -->
+  {% if song %}
+  <div class="result">
+    <h2>{{ mood.capitalize() }} Tip:</h2>
+    <p>{{ tip }}</p>
+    <a href="{{ song }}" target="_blank" rel="noopener noreferrer">🎵 Play Song</a>
   </div>
+  {% endif %}
+
+  {% if error %}
+  <p class="error">{{ error }}</p>
+  {% endif %}
+
+  <!-- Button to toggle feedback form -->
+  <button id="toggleFeedbackBtn" style="margin-top:40px;">Give Feedback</button>
+
+  <!-- Feedback Form -->
+  <div id="feedback-form">
+    <form id="feedbackForm">
+      <label for="feedback">Feedback:</label>
+      <textarea id="feedback" rows="4" placeholder="Enter your feedback here..."></textarea>
+
+      <label for="suggestion">Song Suggestion:</label>
+      <textarea id="suggestion" rows="2" placeholder="Suggest a song..."></textarea>
+
+      <button type="submit">Submit Feedback</button>
+    </form>
+  </div>
+</div>
+
+<footer>Made by Aryan Malik. All rights reserved.</footer>
+
+<script>
+  const toggleBtn = document.getElementById('toggleFeedbackBtn');
+  const feedbackDiv = document.getElementById('feedback-form');
+  const feedbackForm = document.getElementById('feedbackForm');
+
+  // Toggle feedback form visibility
+  toggleBtn.addEventListener('click', () => {
+    if (feedbackDiv.style.display === 'block') {
+      feedbackDiv.style.display = 'none';
+      toggleBtn.textContent = 'Give Feedback';
+    } else {
+      feedbackDiv.style.display = 'block';
+      toggleBtn.textContent = 'Hide Feedback Form';
+      feedbackDiv.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+
+  // Handle Google Form submission via AJAX
+  feedbackForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const submitBtn = feedbackForm.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+
+    const googleFormURL = 'https://docs.google.com/forms/d/e/1FAIpQLSdyQHT3Q6n9eK9_qxefTPad4voYAASxO-Jk93M7vgeb3B5yHw/formResponse';
+
+    const formData = new FormData();
+    formData.append('entry.1406473944', document.getElementById('feedback').value);
+    formData.append('entry.641565808', document.getElementById('suggestion').value);
+
+    fetch(googleFormURL, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: formData
+    })
+    .then(() => {
+      alert('Submitted! Thank you for your feedback.');
+      feedbackForm.reset();
+      feedbackDiv.style.display = 'none';
+      toggleBtn.textContent = 'Give Feedback';
+    })
+    .catch(() => {
+      alert('Submission failed. Please try again later.');
+    })
+    .finally(() => {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit Feedback';
+    });
+  });
+
+</script>
+
 </body>
 </html>
