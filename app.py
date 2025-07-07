@@ -142,8 +142,8 @@ mood_data = {
         "songs": [
             "https://youtu.be/NGPMKB93urc?si=m6sGu6Juf7Ydzcpy",  # Haryanvi Soft Song
             "https://youtu.be/Y17jJEj49AM?si=78yLg69HPXmJmgcM",  # Soothing Haryanvi Melody
-            "https://www.youtube.com/watch?v=t17aQTCYrTU",  # Calm Vibes - Haryanvi
-            "https://www.youtube.com/watch?v=kUiXktZnmQc"   # Relaxing Haryanvi Tune
+            "https://youtu.be/OYf9NlA8AeU?si=5m17c5Sdmspe0y6W",  # Calm Vibes - Haryanvi
+            "https://youtu.be/DTJQzZpQtps?si=bxj00d39TX6xeSY2"   # Relaxing Haryanvi Tune
         ],
         "tip": "Shaanti se baitho, dhyaan do apne dil ko 🧘‍♂️"
     }
@@ -153,46 +153,46 @@ mood_data = {
     "bhojpuri": {
         "happy": {
             "songs": [
-                "https://www.youtube.com/watch?v=fmF2my-WVd0",  # Lollipop Lagelu
-                "https://www.youtube.com/watch?v=6i6pM1Yhvjc",  # Chhalakata Hamro Jawaniya
-                "https://www.youtube.com/watch?v=3lX5Euf01xA",  # Lagdi Lahore Di
-                "https://www.youtube.com/watch?v=K1IepWHmEGo"   # Raja Tani Jai Na
+                "https://youtu.be/4GRpdIV5DAQ?si=uwV-OlotfuB_ZD0_",  # Lollipop Lagelu
+                "https://youtu.be/zmwfd8x0DrM?si=RUb3YqsNY4UfEZsC",  # Chhalakata Hamro Jawaniya
+                "https://youtu.be/xyF0AR1r8OQ?si=sK2EXB5FnZnPrzeR",  # Lagdi Lahore Di
+                "https://youtu.be/fDS-a4JDRpk?si=1vf3pGOU7TNiyQ85"   # Raja Tani Jai Na
             ],
             "tip": "Masti mein raho, nacho aur gaao! 🎉"
         },
         "sad": {
             "songs": [
-                "https://www.youtube.com/watch?v=mEOkmk1G8o8",  # Saiyan Ji Dilwa Mangelein
-                "https://www.youtube.com/watch?v=KDyfNcJc0IE",  # Phoolwa Ke Patunwa
-                "https://www.youtube.com/watch?v=7qhuL3-KnXg",  # Nimiya Ke Daar Maiya
-                "https://www.youtube.com/watch?v=w3l9xgUPHeM"   # Humka Peeni Hai
+                "https://youtu.be/RL66qL8w_PI?si=bNDUkrqY3r-L0uY_",  # Saiyan Ji Dilwa Mangelein
+                "https://youtu.be/mcGyZSkIHKs?si=yvdtnn53L6yTx0iT",  # Phoolwa Ke Patunwa
+                "https://youtu.be/SJ9T6nRpDCM?si=jSGXeOsvRFO_3Uip",  # Nimiya Ke Daar Maiya
+                "https://youtu.be/-uwbenvdiFk?si=meQXm2czmHitFGj6"   # Humka Peeni Hai
             ],
             "tip": "Kabhi kabhi dard bhi gaane ko aur bhi gehra banata hai 💔"
         },
         "romantic": {
             "songs": [
-                "https://www.youtube.com/watch?v=nClKShDb4Ts",  # Tu Lagawelu Jab Lipistic
-                "https://www.youtube.com/watch?v=VQZDLpzMYHs",  # Patna Se Pakistan
-                "https://www.youtube.com/watch?v=DC6U2vVK5xc",  # Bhatar Katani
-                "https://www.youtube.com/watch?v=Oq9Lq7yK2lc"   # Raja Tani Jai Na
+                "https://youtu.be/sAloiE9-OIA?si=QcCDsUejfjO2iHk9",  # Tu Lagawelu Jab Lipistic
+                "https://youtu.be/j1PFv7qIPXo?si=TOaTit500sw1VWhL",  # Patna Se Pakistan
+                "https://youtu.be/VfTUwCyNmzw?si=qoY_QUj_qZqxuKTG",  # Bhatar Katani
+                "https://youtu.be/9K37GCNyQgY?si=Pfs1B956zdrqHvQM"   # Raja Tani Jai Na
             ],
             "tip": "Dil se pyaar karo, gaane ke sath! 💕"
         },
         "energetic": {
             "songs": [
-                "https://www.youtube.com/watch?v=FzqP-HVKpAI",  # Chhalakata Hamro Jawaniya
-                "https://www.youtube.com/watch?v=GCplE_PfC8k",  # Bhatar Aiehe Holi Ke Baad
-                "https://www.youtube.com/watch?v=7vg8mxPZj18",  # Aara Hile Chapra Hile
-                "https://www.youtube.com/watch?v=HLG09mK2TgQ"   # Saiyan Ji Dilwa Mangelein
+                "https://youtu.be/DYO_GLIWlRA?si=mIHdyxfvl1SJUKDd",  # Chhalakata Hamro Jawaniya
+                "https://youtu.be/0c7vj-y5QCs?si=znQesBaWSD7INnPA",  # Bhatar Aiehe Holi Ke Baad
+                "https://youtu.be/SIsGR0-SQf0?si=4LLvi0-7Exjrbnfd",  # Aara Hile Chapra Hile
+                "https://youtu.be/__bM37E9vws?si=WOVkrr6hgJvfdIZu"   # Saiyan Ji Dilwa Mangelein
             ],
             "tip": "Energy ko release karo, full power se! 🔥"
         },
         "calm": {
             "songs": [
-                "https://www.youtube.com/watch?v=LsA6JsRYgnE",  # Pyar Ka Sahara
-                "https://www.youtube.com/watch?v=XZPcZRhVraM",  # Kahiya Se Aailu
-                "https://www.youtube.com/watch?v=w8VrITmKUuQ",  # Mehndi Laga Ke Rakhna
-                "https://www.youtube.com/watch?v=vSNW0XzryCg"   # Saiyan Ji Dilwa Mangelein (Slow)
+                "https://youtu.be/TyfYty3WCb4?si=cKGnoNBSQpmbCgn5",  # Pyar Ka Sahara
+                "https://youtu.be/MXeRQg9CmSM?si=ZgOuKHk-GM1Fpvl0",  # Kahiya Se Aailu
+                "https://youtu.be/Gk60zlZvZuA?si=kgfMcquzuri2iblk",  # Mehndi Laga Ke Rakhna
+                "https://youtu.be/mRUz_E3JzWQ?si=qtBLM8UNu5oEXaIm"   # Saiyan Ji Dilwa Mangelein (Slow)
             ],
             "tip": "Dheere dheere sukoon bhari dhun me doob jao 🧘‍♂️"
         }
@@ -201,46 +201,46 @@ mood_data = {
     "english": {
         "happy": {
             "songs": [
-                "https://www.youtube.com/watch?v=3tmd-ClpJxA",  # Can't Stop the Feeling - JT
-                "https://www.youtube.com/watch?v=kJQP7kiw5Fk",  # Despacito (English version)
-                "https://www.youtube.com/watch?v=5NV6Rdv1a3I",  # Get Lucky - Daft Punk
-                "https://www.youtube.com/watch?v=60ItHLz5WEA"   # Wake Me Up - Avicii
+                "https://youtu.be/ru0K8uYEZWw?si=4i6ZyTJr335DyfEf",  # Can't Stop the Feeling - JT
+                "https://youtu.be/ZbZSe6N_BXs?si=3SKKiA8DplqUo025",  # Despacito (English version)
+                "https://youtu.be/fLexgOxsZu0?si=MCcXbcwmCXi60gMJ",  # Get Lucky - Daft Punk
+                "https://youtu.be/zg49cOyfREc?si=R6H2mrlezvCt6-5W"   # Wake Me Up - Avicii
             ],
             "tip": "Keep smiling and dance like no one's watching! 😄"
         },
         "sad": {
             "songs": [
-                "https://www.youtube.com/watch?v=hLQl3WQQoQ0",  # Someone Like You - Adele
-                "https://www.youtube.com/watch?v=RB-RcX5DS5A",  # Fix You - Coldplay
-                "https://www.youtube.com/watch?v=YQHsXMglC9A",  # Hello - Adele
-                "https://www.youtube.com/watch?v=LG_WkDwA47c"   # Skinny Love - Birdy
+                "https://youtu.be/jLNrvmXboj8?si=nStvsymYYmM99JLF",  # Someone Like You - Adele
+                "https://youtu.be/V1Pl8CzNzCw?si=d08Hj3p9HxWrwfxI",  # Fix You - Coldplay
+                "https://youtu.be/ALM--Jeb-6c?si=tD74IRRUe0wSNmOM",  # Hello - Adele
+                "https://youtu.be/zgaCZOQCpp8?si=1iVtkseOtNAtmOEv"   # Skinny Love - Birdy
             ],
             "tip": "It's okay to feel down sometimes. Take your time 💙"
         },
         "romantic": {
             "songs": [
-                "https://www.youtube.com/watch?v=450p7goxZqg",  # Perfect - Ed Sheeran
-                "https://www.youtube.com/watch?v=08Hr6gZJaeY",  # All of Me - John Legend
-                "https://www.youtube.com/watch?v=Z0GFRcFm-aY",  # I Won't Give Up - Jason Mraz
-                "https://www.youtube.com/watch?v=FlsBObg-1BQ"   # Thinking Out Loud - Ed Sheeran
+                "https://youtu.be/AJtDXIazrMo?si=IGU6ahPeO3kfJHbe",  # Perfect - Ed Sheeran
+                "https://youtu.be/lp-EO5I60KA?si=7q8kbmnQbXSG49VJ",  # All of Me - John Legend
+                "https://youtu.be/lWA2pjMjpBs?si=Uo1WNCcqdCzloBnI",  # I Won't Give Up - Jason Mraz
+                "https://youtu.be/bo_efYhYU2A?si=mj8DP5qk5XOzvxXt"   # Thinking Out Loud - Ed Sheeran
             ],
             "tip": "Love is in the air! Send someone a sweet message 💌"
         },
         "energetic": {
             "songs": [
-                "https://www.youtube.com/watch?v=1zjM7_qzLqk",  # Eye of the Tiger - Survivor
-                "https://www.youtube.com/watch?v=btPJPFnesV4",  # Uptown Funk - Bruno Mars
-                "https://www.youtube.com/watch?v=7wtfhZwyrcc",  # Can't Hold Us - Macklemore
-                "https://www.youtube.com/watch?v=OPf0YbXqDm0"   # Happy - Pharrell Williams
+                "https://youtu.be/hHB1Ikzfpmc?si=dCqLyNOJQP74PAgV",  # Eye of the Tiger - Survivor
+                "https://youtu.be/d6_9CF1ucoI?si=QOVWn0ttIo5k-8Kj",  # Uptown Funk - Bruno Mars
+                "https://youtu.be/Yn6w6sbyzug?si=B0gEiuP-u7qGYfLG",  # Can't Hold Us - Macklemore
+                "https://youtu.be/whwe0KD_rGw?si=nzSmsjcgdrQhkXy1"   # Happy - Pharrell Williams
             ],
             "tip": "Use this energy to conquer your day! 💥"
         },
         "calm": {
             "songs": [
-                "https://www.youtube.com/watch?v=2OYq8TDXO9c",  # River Flows in You - Yiruma
-                "https://www.youtube.com/watch?v=V2t7CwAyOyE",  # Weightless - Marconi Union
-                "https://www.youtube.com/watch?v=K1vjb3nS9Y0",  # Clair de Lune - Debussy
-                "https://www.youtube.com/watch?v=9auOCbH5Ns4"   # Spiegel im Spiegel - Arvo Pärt
+                "https://youtu.be/4adZ7AguVcw?si=NFLaQoUW0oS7BBuO",  # River Flows in You - Yiruma
+                "https://youtu.be/jLNrvmXboj8?si=vagDgRoiRfoGSBn3",  # Weightless - Marconi Union
+                "https://youtu.be/mk3XycambgI?si=mDwATxS5IxxpJv57",  # Clair de Lune - Debussy
+                "https://youtu.be/V9PVRfjEBTI?si=nAcaSuGIUYmAV3Iz"   # Spiegel im Spiegel - Arvo Pärt
             ],
             "tip": "Stay calm and let the music heal your soul 🧘‍♂️"
         }
