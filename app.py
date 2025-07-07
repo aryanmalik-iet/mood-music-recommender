@@ -7,46 +7,46 @@ mood_data = {
     "hindi": {
         "happy": {
             "songs": [
-                "https://www.youtube.com/watch?v=BddP6PYo2gs",  # Dance Ka Bhoot
-                "https://www.youtube.com/watch?v=jFxQ8zG4Lz0",  # Guli Mata
-                "https://www.youtube.com/watch?v=6xKWiCMKKJg",  # Nadiyon Paar
-                "https://www.youtube.com/watch?v=rnqL8qT3v8I"   # Kala Chashma
+                "https://youtu.be/nJZcbidTutE?si=o35hUyUpBjsSUdkB",  
+                "https://youtu.be/qpIdoaaPa6U?si=Kc61EWbHJZZJAhdf", 
+                "https://youtu.be/jCEdTq3j-0U?si=zvKKonwNabgw5E4t",  
+                "https://youtu.be/41iEgelUUzM?si=cY0JBUQXarjBHIe_"   # 
             ],
             "tip": "Zindagi ka maza lo, smile karke nach lo! 😄"
         },
         "sad": {
             "songs": [
-                "https://www.youtube.com/watch?v=VZvzvLiGUtw",  # Mann Bharryaa
-                "https://www.youtube.com/watch?v=4DTljc5Cj00",  # Roke Na Ruke
-                "https://www.youtube.com/watch?v=7vh2Y2cL4pQ",  # Tujhe Bhula Diya
-                "https://www.youtube.com/watch?v=eW3tQbiD6sE"   # Channa Mereya
+                "https://youtu.be/lBvbNxiVmZA?si=hqMnGCKsJZJWVgkE",  
+                "https://youtu.be/sVRwZEkXepg?si=D7ZigJ442gShacvW", 
+                "https://youtu.be/1poXN3jF3Bw?si=HcoB6e8eKHt7JUN-", 
+                "https://youtu.be/p9nYTT8KGeM?si=RQiRNgTLeY_Vfkqq"   
             ],
             "tip": "Toote dil ka ilaaj hota hai – ek acha gaana aur thoda waqt 💔"
         },
         "romantic": {
             "songs": [
-                "https://www.youtube.com/watch?v=3j8ecF8Wt4E",  # Raataan Lambiyan
-                "https://www.youtube.com/watch?v=5bYMAgM42pM",  # Maan Meri Jaan
-                "https://www.youtube.com/watch?v=ZbZSe6N_BXs",  # Love Me Like You Do
-                "https://www.youtube.com/watch?v=SH8kqnGPPac"   # Tum Se Hi
+                "https://youtu.be/RazuWp5kSHk?si=5vxafKPvFUI_DeOT",  
+                "https://youtu.be/-8C_2BBVWk8?si=U3um0fPUOF78H7IB", 
+                "https://youtu.be/gvyUuxdRdR4?si=UBM2vRzi-JtxXsep",  
+                "https://youtu.be/gvyUuxdRdR4?si=UBM2vRzi-JtxXsep"   
             ],
             "tip": "Kisi ko yaad karo, dil se. Shayad uska msg aa jaye 💌"
         },
         "energetic": {
             "songs": [
-                "https://www.youtube.com/watch?v=fLexgOxsZu0",  # Uptown Funk (Hindi audience fav)
-                "https://www.youtube.com/watch?v=Bh0b2kPo98Q",  # Apna Time Aayega
-                "https://www.youtube.com/watch?v=K0ibBPhiaG0",  # Malhari
-                "https://www.youtube.com/watch?v=VgQUdD9zXKw"   # Zinda - Bhaag Milkha Bhaag
+                "https://youtu.be/HoCwa6gnmM0?si=2K7oXNmNlXn3jQ71", 
+                "https://youtu.be/abiL84EAWSY?si=D1IVnvi-zpOyNsN9",  
+                "https://youtu.be/puKD3nkB1h4?si=eJAk4bv7VqUR0BPL",  
+                "https://youtu.be/IjBAgWKW12Y?si=4od6_AScIcP3_Obu"   
             ],
             "tip": "Yeh energy kahin chhupa ke na rakho — duniya hila do ⚡"
         },
         "calm": {
             "songs": [
-                "https://www.youtube.com/watch?v=y3M6B5IuQ_4",  # Tum Mile Lo-Fi
-                "https://www.youtube.com/watch?v=w_P-oN-nxdo",  # Lo Maan Liya
-                "https://www.youtube.com/watch?v=QxrQ6BaijAY",  # Safarnama
-                "https://www.youtube.com/watch?v=avz06PDqDbM"   # Dil Diyan Gallan Lo-Fi
+                "https://youtu.be/fSS_R91Nimw?si=YwdT03Y5DZqGhAVK", 
+                "https://youtu.be/uVTdmJIcjtQ?si=72iCHVuJoMMj-PRD",  
+                "https://youtu.be/JHUrRSBtUNE?si=bfSshxrOaaadVETM",  
+                "https://youtu.be/sK7riqg2mr4?si=VjBxK1x6MDQ-dLmn"   
             ],
             "tip": "Shaanti mein hi shakti hai. Saans le aur feel kar 🧘‍♂️"
         }
@@ -55,46 +55,46 @@ mood_data = {
     "punjabi": {
         "happy": {
             "songs": [
-                "https://www.youtube.com/watch?v=xOeI4JcD2Jg",  # Lehanga
-                "https://www.youtube.com/watch?v=7RdW56z4_yU",  # 3 Peg
-                "https://www.youtube.com/watch?v=J3UjzRy7T_w",  # So High
-                "https://www.youtube.com/watch?v=ACJQ2I3rEfw"   # Naah
+                "https://youtu.be/PjTU0DmBWiU?si=mW6Ubli4VAZEUclO",  # Lehanga
+                "https://youtu.be/Q-GOFPM01d0?si=BaFkEevY58_LaaNe",  # 3 Peg
+                "https://youtu.be/n3mJ9b6l33E?si=eyMveD-UrTrUvTNK",  # So High
+                "https://youtu.be/qgbvMJsz1Rk?si=_v4RevjIZTFz8yfz"   # Naah
             ],
             "tip": "Balle balle! Punjabiyan di vibe kuch aur hi hai 🕺"
         },
         "sad": {
             "songs": [
-                "https://www.youtube.com/watch?v=1T5NuI6Ai-o",  # Sidhu Moose Wala - The Last Ride
-                "https://www.youtube.com/watch?v=O3bAbKSFqJ8",  # Jatt Di Pasand
-                "https://www.youtube.com/watch?v=7V_gj1tG8Dg",  # Baarish Ki Jaaye
-                "https://www.youtube.com/watch?v=VQzW_bkOtQM"   # Paigam
+                "https://youtu.be/jynMDYYFB9I?si=4UoEoBQUQ337kHjC",  # Sidhu Moose Wala - The Last Ride
+                "https://youtu.be/QHJstKwI0Ic?si=0laHUPNjE3aR1ppX",  # Jatt Di Pasand
+                "https://youtu.be/enQuoRciccM?si=ZipmWT7XrNA_kHvc",  # Baarish Ki Jaaye
+                "https://youtu.be/Wd6TufgP3qs?si=zZ4u917V3_sGfMNs"   # Paigam
             ],
             "tip": "Thoda dard bhi zaroori hai... jiven geet vich 💔"
         },
         "romantic": {
             "songs": [
-                "https://www.youtube.com/watch?v=qKk6B3-59VE",  # Excuses – A.P. Dhillon
-                "https://www.youtube.com/watch?v=jN__csTtRr4",  # Bijlee Bijlee
-                "https://www.youtube.com/watch?v=3FikYj1hG1s",  # Brown Munde
-                "https://www.youtube.com/watch?v=5N7_5kF_Pz8"   # Qismat
+                "https://youtu.be/X1xub3f7ubY?si=SvLrfJqwATz22kDF",  
+                "https://youtu.be/_RywJ_FJ_3U?si=oQ7NI3l8dBZnOC8b",  
+                "https://youtu.be/9udS0mpi1L4?si=yRlYZShcD85gKF6Q",  
+                "https://youtu.be/jn77BhLMGc8?si=WXbGCRD0bOVyvFMh"   
             ],
             "tip": "Punjabi romance = swag + feeling 💘"
         },
         "energetic": {
             "songs": [
-                "https://www.youtube.com/watch?v=Z-FxR0xGs_k",  # GOAT – Sidhu Moosewala
-                "https://www.youtube.com/watch?v=fkGfIR1y1K0",  # Same Beef
-                "https://www.youtube.com/watch?v=sWzP2ZBV3Wg",  # Lamborghini
-                "https://www.youtube.com/watch?v=-B2SnvQZZYw"   # Sher Aaya Sher
+                "https://youtu.be/RLhuPD2ASKE?si=v7DgBlFwqa6a5IYM",  
+                "https://youtu.be/tpFljbJxZiw?si=eIGBvGcXCiLZ5sJT", 
+                "https://youtu.be/GgmFC8y8q3k?si=4CBeKQRRQ74hGDqv",  
+                "https://youtu.be/6xoB4ZiKKn0?si=gcMhr1bVOStz7_SJ"   
             ],
             "tip": "Gabru da swag! Energy full on 🔥"
         },
         "calm": {
             "songs": [
-                "https://www.youtube.com/watch?v=snYhAXhCWWk",  # Baarish
-                "https://www.youtube.com/watch?v=WU5N2ZjjGBk",  # Sakhiyaan
-                "https://www.youtube.com/watch?v=2Z9_2-HNqWA",  # Rataan
-                "https://www.youtube.com/watch?v=TeTrZP9P1fI"   # Khaab
+                "https://youtu.be/Doo1T5WabEU?si=dBnmr5iD1Nw3-dTC",  # Baarish
+                "https://youtu.be/wLBrjrcMlCo?si=Q5kCicDQoLbmn8RP",  # Sakhiyaan
+                "https://youtu.be/MDwgUE-TBVY?si=yJTty8-jbBn5bKz1",  # Rataan
+                "https://youtu.be/2DNtm_KNVNQ?si=FSoVFdTzHwbHg6CI"   # Khaab
             ],
             "tip": "Dheere bol, halke sun. Sohne geet, sukoon wali feeling 🧘"
         }
@@ -103,44 +103,45 @@ mood_data = {
     "haryanvi": {
     "happy": {
         "songs": [
-            "https://www.youtube.com/watch?v=9ySPQynI6Ww",  # DJ Waley Babu - Badshah
-            "https://www.youtube.com/watch?v=OxmIb4j8xvE",  # Haryanvi Mashup
-            "https://www.youtube.com/watch?v=zWhXIxk8FEI",  # Gajender Phogat - Solid Body
-            "https://www.youtube.com/watch?v=g0bzR3E1WJA"   # DJ Wale Babu Remix
+            "https://youtu.be/OulN7vTDq1I?si=_y8oT0xHtfDJMD2p",  # DJ Waley Babu - Badshah
+            "https://youtu.be/vbaww9S3i8o?si=9qQu-0KD4NCZ7Tqp",  # Haryanvi Mashup
+            "https://youtu.be/cXpkvG4MuW4?si=0UfEmOflyEEwaBZs",  # Gajender Phogat - Solid Body
+            "https://youtu.be/PRiSzXKA2OY?si=mH6C2TyzAD-WYdD9"   # DJ Wale Babu Remix
         ],
         "tip": "Khush raho, naacho, gaao, zindagi ka maza lo! 😄"
     },
     "sad": {
         "songs": [
-            "https://www.youtube.com/watch?v=03O9d1pFr8w",  # Teri Aakhya Ka Yo Kajal - Sapna Choudhary
-            "https://www.youtube.com/watch?v=duUey2RxY2Y",  # Chhoti Chhoti Baatein
-            "https://www.youtube.com/watch?v=JuLdWY9e1QE",  # Dushmani
-            "https://www.youtube.com/watch?v=3J3FPl87-gk"   # Meri Baat Sun Le O Saathi
+            "https://youtu.be/o1tWazvhObc?si=YpH1IXPD4pHt5Ta1",  # Teri Aakhya Ka Yo Kajal - Sapna Choudhary
+            "https://youtu.be/NrN66D-Dj2o?si=VCT72dno5mv-Oq9r",  # Chhoti Chhoti Baatein
+            "https://youtu.be/J0rEeO3HFv8?si=wz6YZkGvquDgWMwA",  # Dushmani
+            "https://youtu.be/nM-OKWu5OXk?si=RnJodqBT8uJVAGwE"   # Meri Baat Sun Le O Saathi
         ],
         "tip": "Dard ko mehsoos karo, par aage badho. Zindagi chalti rahegi 💙"
     },
     "romantic": {
         "songs": [
-            "https://www.youtube.com/watch?v=lIGeTnFf90A",  # Haryanvi Romantic Song - Raju Punjabi
-            "https://www.youtube.com/watch?v=9tx_M0U8pP4",  # Tera Yaar Hoon Main (Haryanvi Cover)
-            "https://www.youtube.com/watch?v=FCZeh8nt5_Y",  # Pyaar Karunga
-            "https://www.youtube.com/watch?v=RhV1hzPUEhM"   # Tere Bin
+            "https://youtu.be/T-ONOkhGITE?si=dkPE4AdkpUFmdVX2",  # Haryanvi Romantic Song - Raju Punjabi
+            "https://youtu.be/cehyr946p64?si=TRUFLs5icAAmPoVc",  # Tera Yaar Hoon Main (Haryanvi Cover)
+            "https://youtu.be/AMQIiEea12A?si=Z7gYRKaoXkju30gr",  # Pyaar Karunga
+            "https://youtu.be/tnlnqTRV5ZQ?si=CdX3qrENOHnL60W2"   # Tere Bin
         ],
         "tip": "Dil se pyaar karo, bina dare 💘"
     },
     "energetic": {
         "songs": [
-            "https://www.youtube.com/watch?v=GE6C1gNUhXA",  # Haryanvi Rap Song - MC Altaf
-            "https://www.youtube.com/watch?v=_LKrr0zKa8k",  # Haryanvi DJ Remix
-            "https://www.youtube.com/watch?v=dQw4w9WgXcQ",  # (Just an example, replace with real energetic song)
-            "https://www.youtube.com/watch?v=OLxdhNKu1Cs"   # Desi Hip-Hop Haryanvi
+            "https://youtu.be/obgMGM6I2rE?si=F8twDCkHwUAlxCsq",  
+            "https://youtu.be/szUSkYTXq7A?si=e2pvqXSU6vo7dRnZ",  
+            "https://youtu.be/ZeaqjybbzzM?si=_3PsDYTdR_9PaQGa",
+            "https://youtu.be/QJdw4OUWyRY?si=8KAh5nECQ6q9TVZE", 
+            "https://youtu.be/ZZ86YrRjIOs?si=-BpqgvwyBpv8-MVn"   
         ],
         "tip": "Energy ko channelize karo, aaj kuch bada karo! 🔥"
     },
     "calm": {
         "songs": [
-            "https://www.youtube.com/watch?v=txhSdTNsZXw",  # Haryanvi Soft Song
-            "https://www.youtube.com/watch?v=VX4uUJxv7f4",  # Soothing Haryanvi Melody
+            "https://youtu.be/NGPMKB93urc?si=m6sGu6Juf7Ydzcpy",  # Haryanvi Soft Song
+            "https://youtu.be/Y17jJEj49AM?si=78yLg69HPXmJmgcM",  # Soothing Haryanvi Melody
             "https://www.youtube.com/watch?v=t17aQTCYrTU",  # Calm Vibes - Haryanvi
             "https://www.youtube.com/watch?v=kUiXktZnmQc"   # Relaxing Haryanvi Tune
         ],
