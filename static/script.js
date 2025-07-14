@@ -19,19 +19,23 @@ function createLoadingParticles() {
         particlesContainer.appendChild(particle);
     }
 }
+let initialLoadDone = false;
+
 
 // Initialize loading screen
 function initializeLoading() {
     createLoadingParticles();
-    
-    // Hide loading screen after 3 seconds
+
     setTimeout(() => {
         const loadingScreen = document.getElementById('loadingScreen');
         loadingScreen.classList.add('fade-out');
-        
-        // Remove from DOM after transition
+
         setTimeout(() => {
             loadingScreen.style.display = 'none';
+
+            // ✅ Mark the initial loading as done
+            initialLoadDone = true;
+
         }, 800);
     }, 3000);
 }
