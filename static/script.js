@@ -19,6 +19,22 @@ function createLoadingParticles() {
         particlesContainer.appendChild(particle);
     }
 }
+const hasLoadedBefore = sessionStorage.getItem("hasLoaded");
+
+if (!hasLoadedBefore) {
+    // Show loader only on first visit
+    document.addEventListener("DOMContentLoaded", () => {
+        initializeLoading(); // run your loader
+        sessionStorage.setItem("hasLoaded", "true"); // mark as shown
+    });
+} else {
+    // Skip loader if already shown
+    document.addEventListener("DOMContentLoaded", () => {
+        const loadingScreen = document.getElementById("loadingScreen");
+        if (loadingScreen) loadingScreen.remove();
+    });
+}
+
 let initialLoadDone = false;
 
 
@@ -31,7 +47,7 @@ function initializeLoading() {
         loadingScreen.classList.add('fade-out');
 
         setTimeout(() => {
-            loadingScreen.style.display = 'none';
+            loadingScreen.remove();
 
             // ✅ Mark the initial loading as done
             initialLoadDone = true;
@@ -101,7 +117,8 @@ class MusicRecommender {
     }
 
     handleFormSubmit(e) {
-    // ✅ Only show loading effect if initial loading is complete
+    e.preventDefault();
+
     if (!initialLoadDone) return;
 
     this.addSubmissionEffects();
