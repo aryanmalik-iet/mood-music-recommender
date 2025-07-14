@@ -20,41 +20,42 @@ function createLoadingParticles() {
     }
 }
 const hasLoadedBefore = sessionStorage.getItem("hasLoaded");
-
-if (!hasLoadedBefore) {
-    // Show loader only on first visit
-    document.addEventListener("DOMContentLoaded", () => {
-        initializeLoading(); // run your loader
-        sessionStorage.setItem("hasLoaded", "true"); // mark as shown
-    });
-} else {
-    // Skip loader if already shown
-    document.addEventListener("DOMContentLoaded", () => {
-        const loadingScreen = document.getElementById("loadingScreen");
-        if (loadingScreen) loadingScreen.remove();
-    });
-}
-
 let initialLoadDone = false;
 
+document.addEventListener("DOMContentLoaded", () => {
+    if (!hasLoadedBefore) {
+        initializeLoading(); // show loader
+        sessionStorage.setItem("hasLoaded", "true");
+    } else {
+        const loadingScreen = document.getElementById("loadingScreen");
+        if (loadingScreen) loadingScreen.remove();
+        initialLoadDone = true; // ✅ still set true, since loader skipped
+    }
 
-// Initialize loading screen
+    // ✅ Always initialize the app
+    const app = new MusicRecommender();
+    window.musicRecommender = app;
+
+    window.addEventListener("beforeunload", () => {
+        app.destroy();
+    });
+});
+
+// Loading screen logic
 function initializeLoading() {
     createLoadingParticles();
 
     setTimeout(() => {
-        const loadingScreen = document.getElementById('loadingScreen');
-        loadingScreen.classList.add('fade-out');
+        const loadingScreen = document.getElementById("loadingScreen");
+        loadingScreen.classList.add("fade-out");
 
         setTimeout(() => {
             loadingScreen.remove();
-
-            // ✅ Mark the initial loading as done
-            initialLoadDone = true;
-
+            initialLoadDone = true; // ✅ after loader finishes
         }, 800);
     }, 3000);
 }
+
 
 // Call this at the very beginning of your DOMContentLoaded event
 
