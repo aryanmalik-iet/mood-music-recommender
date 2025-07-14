@@ -57,7 +57,7 @@ function initializeLoading() {
 }
 
 
-// Call this at the very beginning of your DOMContentLoaded event
+
 
        // Enhanced Music Recommender JavaScript
 class MusicRecommender {
