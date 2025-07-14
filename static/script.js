@@ -19,6 +19,13 @@ function createLoadingParticles() {
         particlesContainer.appendChild(particle);
     }
 }
+
+function hideRecommendation() {
+    const resultDiv = document.getElementById("result-placeholder");
+    if (resultDiv) {
+        resultDiv.innerHTML = '';  // clears the recommendation
+    }
+}
 const hasLoadedBefore = sessionStorage.getItem("hasLoaded");
 let initialLoadDone = false;
 
