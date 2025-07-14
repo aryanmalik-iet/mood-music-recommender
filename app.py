@@ -134,7 +134,7 @@ mood_data = {
             "https://youtu.be/szUSkYTXq7A?si=e2pvqXSU6vo7dRnZ",  
             "https://youtu.be/ZeaqjybbzzM?si=_3PsDYTdR_9PaQGa",
             "https://youtu.be/QJdw4OUWyRY?si=8KAh5nECQ6q9TVZE", 
-            "https://youtu.be/ZZ86YrRjIOs?si=-BpqgvwyBpv8-MVn"   
+            "https://youtu.be/3oOGF8P1BJo?si=IDm7mpEH7NjUBPZL"   
         ],
         "tip": "Energy ko channelize karo, aaj kuch bada karo! 🔥"
     },
