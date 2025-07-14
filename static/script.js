@@ -119,10 +119,13 @@ class MusicRecommender {
 
     handleFormSubmit(e) {
     e.preventDefault();
-
     if (!initialLoadDone) return;
 
     this.addSubmissionEffects();
+
+    setTimeout(() => {
+        this.form.submit(); // ✅ submit manually after animation
+    }, 500); // match with your particle animation time
 }
 
 
@@ -817,20 +820,7 @@ const style = document.createElement('style');
 style.textContent = additionalCSS;
 document.head.appendChild(style);
 
-// Initialize the application when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    // 🧠 This makes the loading screen disappear
-    initializeLoading();
 
-    // 🎵 This starts the app (mood animations, feedback button, etc.)
-    const app = new MusicRecommender();
-    window.musicRecommender = app;
-
-    // 🧼 This cleans up effects when page unloads
-    window.addEventListener('beforeunload', () => {
-        app.destroy();
-    });
-});
 
 
 // Service worker registration for PWA capabilities (optional)
