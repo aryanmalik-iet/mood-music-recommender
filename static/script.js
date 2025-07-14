@@ -101,9 +101,12 @@ class MusicRecommender {
     }
 
     handleFormSubmit(e) {
-        this.loading.style.display = 'block';
-        this.addSubmissionEffects();
-    }
+    // ✅ Only show loading effect if initial loading is complete
+    if (!initialLoadDone) return;
+
+    this.addSubmissionEffects();
+}
+
 
     handleMoodChange(e) {
         // Stop all current mood animations
