@@ -1,35 +1,61 @@
+// Optimized loading particles for low-end devices
 function createLoadingParticles() {
     const particlesContainer = document.getElementById('loadingParticles');
-    const particleCount = 15;
-    
+    // Device capability detection: low-end if <=2GB RAM, <=2 cores, or small screen
+    const isLowEnd = (
+        (window.deviceMemory && window.deviceMemory <= 2) ||
+        (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2) ||
+        (window.innerWidth <= 600)
+    );
+    // Fewer, lighter particles on low-end devices
+    const particleCount = isLowEnd ? 7 : 15;
+    const minDuration = isLowEnd ? 1.5 : 2;
+    const maxDuration = isLowEnd ? 2.5 : 5;
+    const minSize = isLowEnd ? 6 : 8;
+    const maxSize = isLowEnd ? 10 : 16;
+    const boxShadow = isLowEnd ? '0 0 4px' : '0 0 8px';
+
     for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
         particle.className = 'loading-particle';
-        
         // Random positioning and colors
         const colors = ['#00ffff', '#ff00ff', '#ffff00', '#ff6b6b', '#00ff88'];
         const randomColor = colors[Math.floor(Math.random() * colors.length)];
-        
+        const size = Math.random() * (maxSize - minSize) + minSize;
         particle.style.left = Math.random() * 100 + '%';
         particle.style.background = randomColor;
-        particle.style.animationDelay = Math.random() * 4 + 's';
-        particle.style.animationDuration = (Math.random() * 3 + 2) + 's';
-        particle.style.boxShadow = `0 0 8px ${randomColor}`;
-        
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.animationDelay = Math.random() * 2 + 's';
+        particle.style.animationDuration = (Math.random() * (maxDuration - minDuration) + minDuration) + 's';
+        particle.style.boxShadow = `${boxShadow} ${randomColor}`;
         particlesContainer.appendChild(particle);
     }
 }
 
+
 function hideRecommendation() {
     const resultDiv = document.getElementById("result-placeholder");
     if (resultDiv) {
-        resultDiv.innerHTML = '';  // clears the recommendation
+        resultDiv.style.display = "none";
     }
 }
 const hasLoadedBefore = sessionStorage.getItem("hasLoaded");
 let initialLoadDone = false;
 
 document.addEventListener("DOMContentLoaded", () => {
+    // --- Language select hover effect logic ---
+    const languageSelect = document.getElementById('language');
+    const recommendBtn = document.querySelector('.recommend-btn');
+    if (languageSelect && recommendBtn) {
+        languageSelect.addEventListener('change', function() {
+            recommendBtn.classList.add('hovered');
+        });
+        recommendBtn.addEventListener('click', function() {
+            recommendBtn.classList.remove('hovered');
+        });
+    }
+
     if (!hasLoadedBefore) {
         initializeLoading(); // show loader
         sessionStorage.setItem("hasLoaded", "true");
@@ -39,16 +65,44 @@ document.addEventListener("DOMContentLoaded", () => {
         initialLoadDone = true; // ✅ still set true, since loader skipped
     }
 
+    // Hide result only if it is empty (no recommendation)
+    const resultDiv = document.getElementById("result-placeholder");
+    if (resultDiv && resultDiv.innerText.trim() === "") {
+        resultDiv.style.display = "none";
+    } else if (resultDiv) {
+        resultDiv.style.display = "";
+    }
+
     // ✅ Always initialize the app
     const app = new MusicRecommender();
     window.musicRecommender = app;
+
+    // Show result when requesting a new recommendation
+    const form = document.getElementById('recommendForm');
+    if (form) {
+        form.addEventListener('submit', function() {
+            const resultDiv = document.getElementById("result-placeholder");
+            if (resultDiv) resultDiv.style.display = "";
+        });
+    }
+
+    // Hide result when mood is changed
+    const moodSelect = document.getElementById('mood');
+    if (moodSelect) {
+        moodSelect.addEventListener('change', function() {
+            const resultDiv = document.getElementById("result-placeholder");
+            if (resultDiv) resultDiv.style.display = "none";
+        });
+    }
 
     window.addEventListener("beforeunload", () => {
         app.destroy();
     });
 });
 
-// Loading screen logic
+/**
+ * Show loading screen with animated particles for initial load.
+ */
 function initializeLoading() {
     createLoadingParticles();
 
@@ -66,9 +120,27 @@ function initializeLoading() {
 
 
 
-       // Enhanced Music Recommender JavaScript
+// Dynamically import modular mood animation system for mood effects
+(async function() {
+    if (!window.moodAnimations) {
+        try {
+            const mod = await import('./animation/index.js');
+            window.moodAnimations = mod.moodAnimations;
+        } catch (e) {
+            console.error('Failed to load mood animation modules:', e);
+        }
+    }
+})();
+
+// Main app class for Mood Music Recommender
 class MusicRecommender {
     constructor() {
+        // Detect low-end device (used globally for all optimizations)
+        this.isLowEnd = (
+            (window.deviceMemory && window.deviceMemory <= 2) ||
+            (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2) ||
+            (window.innerWidth <= 600)
+        );
         this.init();
         this.setupEventListeners();
         this.createBackgroundEffects();
@@ -177,54 +249,44 @@ class MusicRecommender {
         this.updateFloatingShapes();
     }
 
+    /**
+     * Create animated background shapes (no interactive dots)
+     */
     createBackgroundEffects() {
-        this.createParticles();
+        this.particles.innerHTML = '';
         this.createFloatingShapes();
-        this.startAnimationLoop();
     }
 
+    // (Legacy) Create animated background dots (currently disabled)
     createParticles() {
         this.particles.innerHTML = '';
-        const particleCount = window.innerWidth < 768 ? 15 : 25;
-        
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            
-            const size = Math.random() * 6 + 2;
-            const x = Math.random() * 100;
-            const y = Math.random() * 100;
-            const duration = Math.random() * 10 + 100;
-            const delay = Math.random() * 5;
-            
-            particle.style.cssText = `
-                width: ${size}px;
-                height: ${size}px;
-                left: ${x}%;
-                top: ${y}%;
-                animation-duration: ${duration}s;
-                animation-delay: ${delay}s;
-                background: ${this.getParticleColor()};
-            `;
-            
-            this.particles.appendChild(particle);
-        }
+        // Disabled for performance and user preference
     }
 
+    /**
+     * Create floating animated shapes for the background
+     */
+    /**
+     * Create floating animated shapes for the background
+     * Uses fewer, slower shapes on low-end devices
+     */
     createFloatingShapes() {
         this.floatingShapes.innerHTML = '';
-        const shapeCount = window.innerWidth < 768 ? 5 : 8;
-        
+        const shapeCount = this.isLowEnd
+            ? (window.innerWidth < 768 ? 5 : 10)
+            : (window.innerWidth < 768 ? 12 : 24);
+        const minSize = this.isLowEnd ? 40 : 50;
+        const maxSize = this.isLowEnd ? 70 : 150;
+        const minDuration = this.isLowEnd ? 18 : 10;
+        const maxDuration = this.isLowEnd ? 28 : 25;
         for (let i = 0; i < shapeCount; i++) {
             const shape = document.createElement('div');
             shape.className = 'floating-shape';
-            
-            const size = Math.random() * 100 + 50;
+            const size = Math.random() * (maxSize - minSize) + minSize;
             const x = Math.random() * 100;
             const y = Math.random() * 100;
-            const duration = Math.random() * 15 + 10;
+            const duration = Math.random() * (maxDuration - minDuration) + minDuration;
             const delay = Math.random() * 8;
-            
             shape.style.cssText = `
                 width: ${size}px;
                 height: ${size}px;
@@ -235,7 +297,6 @@ class MusicRecommender {
                 border-radius: ${Math.random() > 0.5 ? '50%' : '10%'};
                 background: ${this.getShapeGradient()};
             `;
-            
             this.floatingShapes.appendChild(shape);
         }
     }
@@ -279,281 +340,21 @@ class MusicRecommender {
         });
     }
 
+    /**
+     * Create mood-specific animation, passing low-end flag for optimization
+     */
     createMoodSpecificEffects() {
-        // Create continuous mood-specific visual effects
-        switch (this.currentMood) {
-            case 'happy':
-                this.createContinuousBubbleEffect();
-                break;
-            case 'sad':
-                this.createContinuousRainEffect();
-                break;
-            case 'romantic':
-                this.createContinuousHeartEffect();
-                break;
-            case 'energetic':
-                this.createContinuousLightningEffect();  
-                break;
-            case 'calm':
-                this.createContinuousWaveEffect();
-                break;
+        // Modular mood animation system
+        if (window.moodAnimations && window.moodAnimations[this.currentMood]) {
+            window.moodAnimations[this.currentMood](
+                this.backgroundEffects,
+                this.moodAnimations,
+                this.isLowEnd // pass low-end flag for animation throttling
+            );
         }
     }
 
-    createContinuousBubbleEffect() {
-    const emojis = ['😃', '🥳', '🤗'];
-    const bubbleInterval = setInterval(() => {
-        for (let i = 0; i < 3; i++) {
-            const timeout = setTimeout(() => {
-                const bubble = document.createElement('div');
-                bubble.className = 'mood-bubble';
-                bubble.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
-                bubble.style.cssText = `
-                    position: absolute;
-                    font-size: ${Math.random() * 20 + 25}px;
-                    left: ${Math.random() * 100}%;
-                    top: 100%;
-                    animation: bubbleRise 4s ease-out forwards;
-                    pointer-events: none;
-                    z-index: 5;
-                    filter: blur(0.5px) brightness(1.2);
-                `;
-                
-                this.backgroundEffects.appendChild(bubble);
-                this.moodAnimations.elements.push(bubble);
-                
-                const removeTimeout = setTimeout(() => {
-                    if (bubble.parentNode) {
-                        bubble.parentNode.removeChild(bubble);
-                    }
-                }, 4000);
-                
-                this.moodAnimations.timeouts.push(removeTimeout);
-            }, i * 500);
-            
-            this.moodAnimations.timeouts.push(timeout);
-        }
-    }, 2000);
-    
-       this.moodAnimations.intervals.push(bubbleInterval);
-   }
-
-    createContinuousRainEffect() {
-        const rainInterval = setInterval(() => {
-            for (let i = 0; i < 10; i++) {
-                const timeout = setTimeout(() => {
-                    const drop = document.createElement('div');
-                    drop.className = 'mood-rain';
-                    drop.style.cssText = `
-                        position: absolute;
-                        width: 2px;
-                        height: ${Math.random() * 25 + 15}px;
-                        background: linear-gradient(to bottom, rgba(173, 216, 230, 0.9), rgba(173, 216, 230, 0.3));
-                        left: ${Math.random() * 100}%;
-                        top: -30px;
-                        animation: rainFall 2s linear forwards;
-                        pointer-events: none;
-                        z-index: 5;
-                    `;
-                    
-                    this.backgroundEffects.appendChild(drop);
-                    this.moodAnimations.elements.push(drop);
-                    
-                    const removeTimeout = setTimeout(() => {
-                        if (drop.parentNode) {
-                            drop.parentNode.removeChild(drop);
-                        }
-                    }, 2000);
-                    
-                    this.moodAnimations.timeouts.push(removeTimeout);
-                }, i * 100);
-                
-                this.moodAnimations.timeouts.push(timeout);
-            }
-        }, 780);
-        
-        this.moodAnimations.intervals.push(rainInterval);
-    }
-
-    createContinuousHeartEffect() {
-        const heartInterval = setInterval(() => {
-            for (let i = 0; i < 2; i++) {
-                const timeout = setTimeout(() => {
-                    const heart = document.createElement('div');
-                    heart.innerHTML = '♥';
-                    heart.className = 'mood-heart';
-                    heart.style.cssText = `
-                        position: absolute;
-                        font-size: ${Math.random() * 25 + 20}px;
-                        color: rgba(255, 20, 147, 0.8);
-                        left: ${Math.random() * 100}%;
-                        top: 100%;
-                        animation: heartRise 5s ease-out forwards;
-                        pointer-events: none;
-                        z-index: 5;
-                    `;
-                    
-                    this.backgroundEffects.appendChild(heart);
-                    this.moodAnimations.elements.push(heart);
-                    
-                    const removeTimeout = setTimeout(() => {
-                        if (heart.parentNode) {
-                            heart.parentNode.removeChild(heart);
-                        }
-                    }, 5000);
-                    
-                    this.moodAnimations.timeouts.push(removeTimeout);
-                }, i * 1000);
-                
-                this.moodAnimations.timeouts.push(timeout);
-            }
-        }, 3000);
-        
-        this.moodAnimations.intervals.push(heartInterval);
-    }
-
-    createContinuousLightningEffect() {
-    const lightningInterval = setInterval(() => {
-        // Create main lightning spark at random position
-        const centerX = Math.random() * 100;
-        const centerY = Math.random() * 100;
-        
-        // Create lightning branches (3-6 branches per spark)
-        const branchCount = Math.floor(Math.random() * 4) + 3;
-        
-        for (let i = 0; i < branchCount; i++) {
-            const timeout = setTimeout(() => {
-                const branch = document.createElement('div');
-                branch.className = 'lightning-branch';
-                
-                const angle = (360 / branchCount) * i + Math.random() * 60 - 30;
-                const length = Math.random() * 150 + 50;
-                
-                branch.style.cssText = `
-                    position: absolute;
-                    width: ${length}px;
-                    height: 3px;
-                    background: linear-gradient(90deg, 
-                        transparent 0%, 
-                        #FFD700 20%, 
-                        #FFFFFF 50%, 
-                        #00FFFF 80%, 
-                        transparent 100%);
-                    left: ${centerX}%;
-                    top: ${centerY}%;
-                    transform-origin: 0 50%;
-                    transform: rotate(${angle}deg);
-                    animation: lightningBranch 0.3s ease-out forwards;
-                    pointer-events: none;
-                    z-index: 5;
-                    box-shadow: 0 0 15px #FFD700, 0 0 30px #00FFFF;
-                `;
-                
-                this.backgroundEffects.appendChild(branch);
-                this.moodAnimations.elements.push(branch);
-                
-                // Add electric glow effect
-                const glow = document.createElement('div');
-                glow.className = 'lightning-glow';
-                glow.style.cssText = `
-                    position: absolute;
-                    width: 20px;
-                    height: 20px;
-                    background: radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(0, 255, 255, 0.4), transparent);
-                    border-radius: 50%;
-                    left: ${centerX}%;
-                    top: ${centerY}%;
-                    transform: translate(-50%, -50%);
-                    animation: electricGlow 0.5s ease-out forwards;
-                    pointer-events: none;
-                    z-index: 6;
-                `;
-                
-                this.backgroundEffects.appendChild(glow);
-                this.moodAnimations.elements.push(glow);
-                
-                const removeTimeout = setTimeout(() => {
-                    if (branch.parentNode) branch.parentNode.removeChild(branch);
-                    if (glow.parentNode) glow.parentNode.removeChild(glow);
-                }, 500);
-                
-                this.moodAnimations.timeouts.push(removeTimeout);
-            }, i * 50);
-            
-            this.moodAnimations.timeouts.push(timeout);
-        }
-        
-        // Create electric particles around the spark
-        for (let i = 0; i < 15; i++) {
-            const particleTimeout = setTimeout(() => {
-                const particle = document.createElement('div');
-                particle.className = 'electric-particle';
-                particle.style.cssText = `
-                    position: absolute;
-                    width: 4px;
-                    height: 4px;
-                    background: #FFD700;
-                    border-radius: 50%;
-                    left: ${centerX + (Math.random() - 0.5) * 20}%;
-                    top: ${centerY + (Math.random() - 0.5) * 20}%;
-                    animation: electricParticle 1s ease-out forwards;
-                    pointer-events: none;
-                    z-index: 5;
-                    box-shadow: 0 0 8px #FFD700;
-                `;
-                
-                this.backgroundEffects.appendChild(particle);
-                this.moodAnimations.elements.push(particle);
-                
-                const removeParticleTimeout = setTimeout(() => {
-                    if (particle.parentNode) {
-                        particle.parentNode.removeChild(particle);
-                    }
-                }, 1000);
-                
-                this.moodAnimations.timeouts.push(removeParticleTimeout);
-            }, i * 30);
-            
-            this.moodAnimations.timeouts.push(particleTimeout);
-        }
-        
-    }, 800); // Lightning every 0.8 seconds
-    
-        this.moodAnimations.intervals.push(lightningInterval);
-    }
-
-    createContinuousWaveEffect() {
-        const waveInterval = setInterval(() => {
-            const wave = document.createElement('div');
-            wave.className = 'mood-wave';
-            wave.style.cssText = `
-                position: absolute;
-                width: 100px;
-                height: 100px;
-                background: radial-gradient(circle, rgba(0, 255, 127, 0.4) 0%, transparent 70%);
-                border-radius: 50%;
-                left: ${Math.random() * 100}%;
-                top: ${Math.random() * 100}%;
-                transform: scale(0);
-                animation: waveExpand 4s ease-out forwards;
-                pointer-events: none;
-                z-index: 5;
-            `;
-            
-            this.backgroundEffects.appendChild(wave);
-            this.moodAnimations.elements.push(wave);
-            
-            const removeTimeout = setTimeout(() => {
-                if (wave.parentNode) {
-                    wave.parentNode.removeChild(wave);
-                }
-            }, 4000);
-            
-            this.moodAnimations.timeouts.push(removeTimeout);
-        }, 1500);
-        
-        this.moodAnimations.intervals.push(waveInterval);
-    }
+// ...
 
     addSubmissionEffects() {
         // Add a pulse effect to the form
@@ -594,32 +395,34 @@ class MusicRecommender {
         }
     }
 
-    startAnimationLoop() {
-        const animate = () => {
-            this.updateParticlePositions();
-            this.animationFrameId = requestAnimationFrame(animate);
-        };
-        animate();
-    }
+    // startAnimationLoop() {
+    //     const animate = () => {
+    //         this.updateParticlePositions();
+    //         this.animationFrameId = requestAnimationFrame(animate);
+    //     };
+    //     animate();
+    // }
 
-    updateParticlePositions() {
-        const particles = this.particles.querySelectorAll('.particle');
-        particles.forEach(particle => {
-            const rect = particle.getBoundingClientRect();
-            if (rect.top > window.innerHeight + 100) {
-                particle.style.top = '-10px';
-                particle.style.left = Math.random() * 100 + '%';
-            }
-        });
-    }
 
+    // updateParticlePositions() {
+    //     const particles = this.particles.querySelectorAll('.particle');
+    //     particles.forEach(particle => {
+    //         const rect = particle.getBoundingClientRect();
+    //         if (rect.top > window.innerHeight + 100) {
+    //             particle.style.top = '-10px';
+    //             particle.style.left = Math.random() * 100 + '%';
+    //         }
+    //     });
+    // }
+
+
+    /**
+     * Subtle parallax effect for mood overlay on mouse move
+     */
     handleMouseMove(e) {
         const x = e.clientX / window.innerWidth;
         const y = e.clientY / window.innerHeight;
-        
-        // Create subtle interactive effects
         this.moodOverlay.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
-        this.particles.style.transform = `translate(${x * -5}px, ${y * -5}px)`;
     }
 
     toggleFeedback() {
@@ -728,7 +531,7 @@ class MusicRecommender {
     }
 }
 
-// Enhanced CSS animations
+// CSS keyframes for all background and mood animations
 const additionalCSS = `
 @keyframes bubbleRise {
     0% { transform: translateY(0) scale(1); opacity: 1; }
@@ -830,20 +633,7 @@ document.head.appendChild(style);
 
 
 
-// Service worker registration for PWA capabilities (optional)
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-            .then(registration => {
-                console.log('SW registered: ', registration);
-            })
-            .catch(registrationError => {
-                console.log('SW registration failed: ', registrationError);
-            });
-    });
-}
-
-// Performance monitoring
+// Performance monitoring for custom measurements
 const observer = new PerformanceObserver((list) => {
     for (const entry of list.getEntries()) {
         if (entry.entryType === 'measure') {
@@ -851,10 +641,9 @@ const observer = new PerformanceObserver((list) => {
         }
     }
 });
-
 observer.observe({ entryTypes: ['measure'] });
 
-// Utility functions
+// Utility functions for debounce, throttle, color, lerp
 const utils = {
     debounce: (func, wait) => {
         let timeout;
