@@ -93,8 +93,8 @@
         <div id="result-placeholder">
             {% if song %}
             <div class="result">
-              <h2>{{ mood.capitalize() }} Tip:</h2>
-              <p>{{ tip }}</p>
+              <h2 class="song-title">Your Song</h2>
+<p class="actual-song-title">{{ song_title }}</p>
               <a class="play-btn" href="{{ song }}" target="_blank" rel="noopener noreferrer" onclick="hideRecommendation()">🎵 Play Song</a>
             </div>
             {% endif %}
