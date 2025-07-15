@@ -2,18 +2,21 @@
 function createLoadingParticles() {
     const particlesContainer = document.getElementById('loadingParticles');
     // Device capability detection: low-end if <=2GB RAM, <=2 cores, or small screen
+    // Force low-end optimizations for ALL mobile devices
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     const isLowEnd = (
+        isMobile ||
         (window.deviceMemory && window.deviceMemory <= 2) ||
         (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2) ||
         (window.innerWidth <= 600)
     );
-    // Fewer, lighter particles on low-end devices
-    const particleCount = isLowEnd ? 7 : 15;
-    const minDuration = isLowEnd ? 1.5 : 2;
-    const maxDuration = isLowEnd ? 2.5 : 5;
-    const minSize = isLowEnd ? 6 : 8;
-    const maxSize = isLowEnd ? 10 : 16;
-    const boxShadow = isLowEnd ? '0 0 4px' : '0 0 8px';
+    // FURTHER optimize for mobile/low-end: fewer, smaller, no box-shadow, shorter duration
+    const particleCount = isLowEnd ? 4 : 12;
+    const minDuration = isLowEnd ? 1 : 1.5;
+    const maxDuration = isLowEnd ? 1.5 : 3;
+    const minSize = isLowEnd ? 5 : 8;
+    const maxSize = isLowEnd ? 8 : 16;
+    const boxShadow = isLowEnd ? 'none' : '0 0 8px';
 
     for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
@@ -92,12 +95,14 @@ document.addEventListener("DOMContentLoaded", () => {
         moodSelect.addEventListener('change', function() {
             const resultDiv = document.getElementById("result-placeholder");
             if (resultDiv) resultDiv.style.display = "none";
+            // Mood/background effects are only updated when user manually changes mood
         });
     }
 
-    window.addEventListener("beforeunload", () => {
-        app.destroy();
-    });
+    // Do NOT stop mood animations on page unload or reload
+    // window.addEventListener("beforeunload", () => {
+    //     app.destroy();
+    // });
 });
 
 /**
@@ -130,13 +135,20 @@ function initializeLoading() {
             console.error('Failed to load mood animation modules:', e);
         }
     }
+    // ✅ Always initialize the app AFTER moodAnimations are loaded
+    if (!window.musicRecommender) {
+        const app = new MusicRecommender();
+        window.musicRecommender = app;
+    }
 })();
 
 // Main app class for Mood Music Recommender
 class MusicRecommender {
     constructor() {
-        // Detect low-end device (used globally for all optimizations)
+        // Mobile detection for performance optimization
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         this.isLowEnd = (
+            isMobile ||
             (window.deviceMemory && window.deviceMemory <= 2) ||
             (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2) ||
             (window.innerWidth <= 600)
@@ -158,76 +170,89 @@ class MusicRecommender {
         this.particles = document.getElementById('particles');
         this.floatingShapes = document.getElementById('floatingShapes');
         this.moodOverlay = document.getElementById('moodOverlay');
-        
-        this.currentMood = 'happy';
+
+        const savedMood = localStorage.getItem('selectedMood');
+        this.currentMood = savedMood || 'happy';
+        if (this.moodSelect) {
+            this.moodSelect.value = this.currentMood;
+        }
+        this.createMoodSpecificEffects();
         this.animationFrameId = null;
-        
-        // Track mood-specific animations
         this.moodAnimations = {
             intervals: [],
             timeouts: [],
             elements: []
         };
+        this.addFloatingIcons();
+    }
+
+    addFloatingIcons() {
+        if (document.querySelector('.floating-icons')) return;
+        // Inject SVG sprite if not present
+        if (!document.getElementById('portfolio-linkedin-icons-sprite')) {
+            fetch('static/portfolio-linkedin-icons.svg')
+                .then(resp => resp.text())
+                .then(svg => {
+                    const div = document.createElement('div');
+                    div.style.display = 'none';
+                    div.innerHTML = svg;
+                    div.firstChild.id = 'portfolio-linkedin-icons-sprite';
+                    document.body.appendChild(div.firstChild);
+                });
+        }
+        const container = document.createElement('div');
+        container.className = 'floating-icons';
+        // Portfolio button
+        const portfolioBtn = document.createElement('button');
+        portfolioBtn.className = 'floating-icon-btn';
+        portfolioBtn.title = 'My Portfolio';
+        portfolioBtn.innerHTML = '<svg width="28" height="28"><use href="#icon-portfolio"/></svg>';
+        portfolioBtn.onclick = () => window.open('https://aryanmalik-iet.github.io/hacker-portfolio/', '_blank');
+        // LinkedIn button
+        const linkedinBtn = document.createElement('button');
+        linkedinBtn.className = 'floating-icon-btn';
+        linkedinBtn.title = 'LinkedIn';
+        linkedinBtn.innerHTML = '<svg width="28" height="28"><use href="#icon-linkedin"/></svg>';
+        linkedinBtn.onclick = () => window.open('https://www.linkedin.com/in/aryanmaliksbps/', '_blank');
+        container.appendChild(portfolioBtn);
+        container.appendChild(linkedinBtn);
+        document.body.appendChild(container);
     }
 
     setupEventListeners() {
-        // Form submission
         this.form.addEventListener('submit', (e) => this.handleFormSubmit(e));
-        
-        // Mood change
         this.moodSelect.addEventListener('change', (e) => this.handleMoodChange(e));
-        
-        // Feedback toggle
         this.toggleBtn.addEventListener('click', () => this.toggleFeedback());
-        
-        // Feedback form submission
         this.feedbackForm.addEventListener('submit', (e) => this.handleFeedbackSubmit(e));
-        
-        // Close feedback on outside click
         document.addEventListener('click', (e) => this.handleOutsideClick(e));
-        
-        // Keyboard shortcuts
         document.addEventListener('keydown', (e) => this.handleKeyboard(e));
-        
-        // Window resize
         window.addEventListener('resize', () => this.handleResize());
-        
-        // Mouse movement for interactive effects
         document.addEventListener('mousemove', (e) => this.handleMouseMove(e));
     }
 
     handleFormSubmit(e) {
-    e.preventDefault();
-    if (!initialLoadDone) return;
+        e.preventDefault();
+        if (!initialLoadDone) return;
 
-    this.addSubmissionEffects();
-
-    setTimeout(() => {
-        this.form.submit(); // ✅ submit manually after animation
-    }, 500); // match with your particle animation time
-}
-
+        this.addSubmissionEffects();
+        setTimeout(() => {
+            this.form.submit();
+        }, 500);
+    }
 
     handleMoodChange(e) {
-        // Stop all current mood animations
         this.stopMoodAnimations();
-        
         this.currentMood = e.target.value;
+        localStorage.setItem('selectedMood', this.currentMood);
         this.updateMoodBackground();
         this.createMoodSpecificEffects();
     }
 
-    // New method to stop all mood animations
     stopMoodAnimations() {
-        // Clear all intervals
         this.moodAnimations.intervals.forEach(interval => clearInterval(interval));
         this.moodAnimations.intervals = [];
-        
-        // Clear all timeouts
         this.moodAnimations.timeouts.forEach(timeout => clearTimeout(timeout));
         this.moodAnimations.timeouts = [];
-        
-        // Remove all mood-specific elements
         this.moodAnimations.elements.forEach(element => {
             if (element && element.parentNode) {
                 element.parentNode.removeChild(element);
@@ -237,7 +262,6 @@ class MusicRecommender {
     }
 
     updateMoodBackground() {
-        // Remove existing mood classes
         const moodClasses = ['mood-happy', 'mood-sad', 'mood-romantic', 'mood-energetic', 'mood-calm'];
         this.moodOverlay.classList.remove(...moodClasses);
         
