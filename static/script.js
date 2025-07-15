@@ -252,15 +252,38 @@ class MusicRecommender {
     /**
      * Create animated background shapes (no interactive dots)
      */
+    /**
+     * Create animated background shapes and static dots
+     */
     createBackgroundEffects() {
-        this.particles.innerHTML = '';
+        this.createParticles(); // Show static dots
         this.createFloatingShapes();
     }
 
-    // (Legacy) Create animated background dots (currently disabled)
+    /**
+     * Create static background dots (no animation, no movement)
+     */
     createParticles() {
         this.particles.innerHTML = '';
-        // Disabled for performance and user preference
+        const particleCount = this.isLowEnd ? 10 : 20;
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            const size = Math.random() * 6 + 2;
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            particle.style.cssText = `
+                width: ${size}px;
+                height: ${size}px;
+                left: ${x}%;
+                top: ${y}%;
+                background: ${this.getParticleColor()};
+                position: absolute;
+                border-radius: 50%;
+                opacity: 0.7;
+            `;
+            this.particles.appendChild(particle);
+        }
     }
 
     /**
