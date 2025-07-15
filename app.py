@@ -259,9 +259,27 @@ def recommend():
     language = request.form.get('language', 'hindi')  # Default to Hindi if nothing selected
 
     if language in mood_data and mood in mood_data[language]:
+        import requests
+        import re
         song = random.choice(mood_data[language][mood]["songs"])
-        tip = mood_data[language][mood]["tip"]
-        return render_template('index.html', song=song, tip=tip, mood=mood)
+        # Extract video ID from URL
+        match = re.search(r"(?:v=|be/)([\w-]+)", song)
+        video_id = match.group(1) if match else None
+        # Embed YouTube API key
+        YOUTUBE_API_KEY = "AIzaSyAnsVMEwr7EFCGXFcY5UZcEEZDRyJxYy6Q"
+        song_title = "Unknown Song"
+        if video_id:
+            api_url = f"https://www.googleapis.com/youtube/v3/videos?id={video_id}&key={YOUTUBE_API_KEY}&part=snippet"
+            try:
+                response = requests.get(api_url)
+                if response.status_code == 200:
+                    data = response.json()
+                    items = data.get("items")
+                    if items and len(items) > 0:
+                        song_title = items[0]["snippet"]["title"]
+            except Exception:
+                pass
+        return render_template('index.html', song=song, song_title=song_title, mood=mood)
     else:
         return render_template('index.html', error="Invalid mood or language selected.")
 
