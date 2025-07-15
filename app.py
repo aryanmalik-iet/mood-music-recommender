@@ -267,7 +267,7 @@ def recommend():
         video_id = match.group(1) if match else None
         # Embed YouTube API key
         import os
-         YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY")
+        YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY")
         song_title = "Unknown Song"
         if video_id:
             api_url = f"https://www.googleapis.com/youtube/v3/videos?id={video_id}&key={YOUTUBE_API_KEY}&part=snippet"
